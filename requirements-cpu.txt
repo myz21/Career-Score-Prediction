@@ -1,0 +1,19 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# CPU-only Requirements — no CUDA needed
+# ══════════════════════════════════════════════════════════════════════════════
+#
+# Install with:
+#   pip install -r requirements-cpu.txt
+#
+# Suitable for: Kaggle CPU kernels, CI/CD, MacOS, machines without a GPU.
+# TabPFN will run on CPU (slower). CatBoost is unaffected.
+#
+# ── PyTorch (CPU-only) ────────────────────────────────────────────────────────
+--index-url https://download.pytorch.org/whl/cpu
+
+torch>=2.8.0
+torchaudio>=2.8.0
+torchvision>=0.23.0
+
+# ── Base project deps (pulls pyproject.toml core dependencies) ────────────────
+-e .

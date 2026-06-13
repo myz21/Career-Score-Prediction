@@ -53,12 +53,24 @@ dependencies = [
     "pyarrow>=21.0.0",
 ]
 
+# ── PyTorch / CUDA — NOT listed here ─────────────────────────────────────────
+# PyTorch CUDA builds require a wheel index URL that pyproject.toml cannot
+# express. Install PyTorch separately using one of:
+#
+#   GPU (CUDA 12.8, teknofest_yarisma env):  pip install -r requirements-gpu.txt
+#   CPU-only (Kaggle, CI, no GPU):           pip install -r requirements-cpu.txt
+#
+# Env reference (teknofest_yarisma):
+#   torch==2.8.0+cu128  torchaudio==2.8.0+cu128  torchvision==0.23.0+cu128
+
 [project.optional-dependencies]
 dev = [
     "jupyterlab>=4.5",
     "ipywidgets>=8.1",
     "notebook>=7.5",
 ]
+# gpu / cpu extras are intentionally in requirements-gpu.txt / requirements-cpu.txt
+# because pip cannot express --index-url overrides inside pyproject.toml.
 
 # ── Tool configuration ────────────────────────────────────────────────────────
 [tool.setuptools.packages.find]

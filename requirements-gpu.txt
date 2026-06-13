@@ -1,0 +1,27 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# GPU / CUDA Requirements — CUDA 12.8 build
+# ══════════════════════════════════════════════════════════════════════════════
+#
+# Install with:
+#   pip install -r requirements-gpu.txt
+#
+# These packages require a special PyTorch index and CANNOT be expressed in
+# pyproject.toml [dependencies]. CUDA 12.8 is assumed (RTX 30xx/40xx/50xx).
+# For other CUDA versions see: https://pytorch.org/get-started/locally/
+#
+# ── PyTorch (CUDA 12.8) ───────────────────────────────────────────────────────
+--index-url https://download.pytorch.org/whl/cu128
+
+torch==2.8.0+cu128
+torchaudio==2.8.0+cu128
+torchvision==0.23.0+cu128
+
+# ── Triton (CUDA kernel compiler, required by torch 2.8) ─────────────────────
+# Installed automatically with torch on Linux; listed here for reproducibility
+triton==3.4.0
+
+# ── NVIDIA Python bindings (management layer) ─────────────────────────────────
+nvidia-ml-py>=13.610.43
+
+# ── Base project deps (pulls pyproject.toml core dependencies) ────────────────
+-e .
