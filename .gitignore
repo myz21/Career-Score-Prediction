@@ -1,0 +1,63 @@
+# ── Python ─────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.Python
+pip-wheel-metadata/
+
+# ── Environments ───────────────────────────────────────────────────────────────
+.env
+.venv
+env/
+venv/
+ENV/
+.conda/
+
+# ── Jupyter ────────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# ── Data files (large / sensitive) ─────────────────────────────────────────────
+*.csv
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# Keep processed output folder tracked via Git LFS or explicitly:
+!output/train.parquet
+!output/test.parquet
+
+# ── Model artifacts ─────────────────────────────────────────────────────────────
+*.cbm
+catboost_info/
+catboost_training.json
+submission_*.csv
+
+# ── Reports / generated HTML ───────────────────────────────────────────────────
+*.html
+*.pdf
+
+# ── IDE / OS ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+~$*
+.~lock.*
+
+# ── Misc ───────────────────────────────────────────────────────────────────────
+*.log
+*.v3.lock
