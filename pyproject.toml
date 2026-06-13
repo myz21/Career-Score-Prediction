@@ -1,0 +1,78 @@
+[build-system]
+requires = ["setuptools>=80", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "career-score-prediction"
+version = "0.1.0"
+description = "BTK Datathon 2026 — Student career success score prediction using CatBoost + TabPFN hybrid ensemble"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [
+    { name = "Happy Llama Team", github = "https://github.com/myz21" },
+]
+keywords = ["machine-learning", "datathon", "catboost", "tabpfn", "career-prediction"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.9"
+
+# ── Core ML ──────────────────────────────────────────────────────────────────
+dependencies = [
+    # Gradient boosting
+    "catboost>=1.2.10",
+
+    # In-context learning transformer for tabular data
+    # NOTE: tabpfn v8 API is NOT compatible with tabpfn-extensions (<8).
+    #       Keep tabpfn pinned to avoid silent downgrade.
+    "tabpfn==8.0.7",
+
+    # Classical ML / preprocessing
+    "scikit-learn>=1.6.1",
+
+    # Data wrangling
+    "pandas>=2.3.1",
+    "numpy>=2.0.2",
+
+    # Feature importance & model interpretability
+    "shap>=0.49.1",
+
+    # Visualisation
+    "matplotlib>=3.9.4",
+    "seaborn>=0.13.2",
+    "missingno>=0.5.2",
+
+    # Automated EDA report
+    "ydata-profiling>=4.17.0",
+
+    # Parquet I/O (output/ directory)
+    "fastparquet>=2024.11.0",
+    "pyarrow>=21.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyterlab>=4.5",
+    "ipywidgets>=8.1",
+    "notebook>=7.5",
+]
+
+# ── Tool configuration ────────────────────────────────────────────────────────
+[tool.setuptools.packages.find]
+where = ["."]
+exclude = ["output*", "catboost_info*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
