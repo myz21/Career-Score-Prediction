@@ -1,16 +1,12 @@
-# 🎓 Career Score Prediction — Datathon 2026
+# Career Score Prediction
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
-[![CatBoost](https://img.shields.io/badge/CatBoost-gradient%20boosting-yellow)](https://catboost.ai/)
-[![TabPFN](https://img.shields.io/badge/TabPFN-v3-green)](https://github.com/automl/TabPFN)
-[![License](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
+## BTK Datathon 2026 — Happy Llama Team
 
-> **Datathon 2026 — Happy Llama Z Team**  
 > Predicting student career success scores using a hybrid CatBoost + TabPFN ensemble with role-aware feature engineering.
 
 ---
 
-## 📋 Problem Statement
+## Problem Statement
 
 Given a dataset of student profiles — including technical skill scores, portfolio quality, interview performance, and target role — predict the `career_success_score` (0–100) for each student.
 
@@ -18,7 +14,7 @@ The challenge: **the same skill level means different things in different roles.
 
 ---
 
-## 🏗️ Solution Architecture
+## Solution Architecture (may be change)
 
 ```
 Train Data (CSV)
@@ -50,7 +46,7 @@ Train Data (CSV)
 
 ---
 
-## 🔬 Key Feature Engineering: Role-Aware Skills
+## Key Feature Engineering: Role-Aware Skills (will be added)
 
 The most important innovation in this solution is **role-relevant skill features**. Instead of treating all skill scores equally, we compute skill metrics specific to each student's `target_role`.
 
@@ -77,29 +73,36 @@ role_skill_map = {
 | `role_skill_x_technical_interview` | Interaction: role fit × interview score |
 | `role_skill_x_portfolio` | Interaction: role fit × portfolio score |
 
----
-
-## 📁 Repository Structure
-
-```
-Career-Score-Prediction/
-├── son_kaggle.ipynb              # 🔑 Final solution notebook
-├── TRAINING_STRATEGY_PROMPT.md   # Training strategy notes & CV improvements
-├── UZMANLIK_ALANI_PROMPT.md      # Role-aware feature engineering guide
-├── output/
-│   ├── train.parquet             # Processed training data
-│   └── test.parquet              # Processed test data
-└── README.md
-```
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### Requirements
+### Installation
 
+**1 — Clone the repo**
 ```bash
-pip install catboost tabpfn scikit-learn pandas numpy shap
+git clone https://github.com/myz21/Career-Score-Prediction.git
+cd Career-Score-Prediction
+```
+
+**2 — Install core dependencies**
+```bash
+pip install -e .
+```
+
+**3 — Install PyTorch** *(pick one)*
+
+| Environment | Command |
+|---|---|
+| 🖥️ GPU with CUDA 12.8 (`teknofest_yarisma` env) | `pip install -r requirements-gpu.txt` |
+| 💻 CPU-only (Kaggle kernel / no GPU) | `pip install -r requirements-cpu.txt` |
+
+> **Why separate files?** PyTorch CUDA builds need `--index-url https://download.pytorch.org/whl/cu128`, which cannot be expressed inside `pyproject.toml`.
+
+**Optional — dev tools (JupyterLab, widgets)**
+```bash
+pip install -e ".[dev]"
 ```
 
 ### Running the Notebook
@@ -108,11 +111,11 @@ pip install catboost tabpfn scikit-learn pandas numpy shap
 jupyter notebook son_kaggle.ipynb
 ```
 
-The notebook is self-contained. It expects `train.csv` and `test_x.csv` in the working directory (not included due to size; available on the competition platform).
+The notebook expects `train.csv` and `test_x.csv` in the working directory *(not included due to size — download from the BTK Datathon 2026 competition page)*.
 
 ---
 
-## 📊 Model Details
+## Model Details
 
 ### CatBoost
 - **Iterations:** 3000–4000  
@@ -134,7 +137,7 @@ The notebook is self-contained. It expects `train.csv` and `test_x.csv` in the w
 
 ---
 
-## 📈 Validation Strategy
+## Validation Strategy
 
 **Problem:** Standard `KFold` was too optimistic — public leaderboard showed a gap.
 
@@ -165,7 +168,7 @@ This ensures each fold has a representative distribution of career success score
 
 ---
 
-## 🧠 Strategy Notes
+## Strategy Notes
 
 See [`TRAINING_STRATEGY_PROMPT.md`](TRAINING_STRATEGY_PROMPT.md) for detailed training strategy and CV analysis.
 
@@ -175,11 +178,11 @@ See [`UZMANLIK_ALANI_PROMPT.md`](UZMANLIK_ALANI_PROMPT.md) for the complete role
 
 ## 👥 Team
 
-**Happy Llama Z** — Datathon 2026  
+**Happy Llama** — Datathon 2026  
 GitHub: [@myz21](https://github.com/myz21)
-
+Github: [@ebrarkuz](https://github.com/ebrarkuz)
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
