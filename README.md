@@ -179,8 +179,7 @@ See [`UZMANLIK_ALANI_PROMPT.md`](UZMANLIK_ALANI_PROMPT.md) for the complete role
 ## 👥 Team
 
 **Happy Llama** — Datathon 2026  
-GitHub: [@myz21](https://github.com/myz21)
-Github: [@ebrarkuz](https://github.com/ebrarkuz)
+[@myz21](https://github.com/myz21) and [@ebrarkuz](https://github.com/ebrarkuz)
 ---
 
 ## License
